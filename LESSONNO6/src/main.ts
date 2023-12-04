@@ -1,5 +1,5 @@
 class Coder {
-  secondLang!: string;
+  secondLang!: string; // secondLang! => is not can't be undefined
 
   constructor(
     public readonly name: string,
