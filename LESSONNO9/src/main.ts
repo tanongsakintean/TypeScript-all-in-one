@@ -11,7 +11,7 @@ interface Assignment {
 
 const updateAssignment = (
   assign: Assignment,
-  propsToUpdate: Partial<Assignment> /// this is some property in type for update value
+  propsToUpdate: Partial<Assignment> /// this is some property in type from type in Partial in this case is Assignment
 ): Assignment => {
   return {
     ...assign,
@@ -152,7 +152,7 @@ const fetchUsers = async (): Promise<User[]> => {
   return data;
 };
 
-type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>; /// NEW type from function set async it focus type return from await in this example type is User[]
+type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>; /// NEW type from function set async it focus type return from await 100% in this example type is User[]
 let user: FetchUsersReturnType = [];
 fetchUsers().then((users) => {
   user = [...users];
