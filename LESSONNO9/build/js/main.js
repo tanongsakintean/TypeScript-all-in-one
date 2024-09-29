@@ -178,3 +178,40 @@ const funFullNmme = (arg1, arg2) => {
 };
 let parametersArgsFunction = ["11", "22"];
 let returnTypeFuntion = "return type function";
+/// Awaited Type ===  use with asynchronous 
+function getFullName() {
+    return __awaiter(this, void 0, void 0, function* () {
+        return "string asynchronous ";
+    });
+}
+function sayHello(message) {
+    return message;
+}
+/// constructorParameter Type ===  return args type of constructor 
+class Person {
+    constructor(name, age) {
+        this.age = age;
+        this.name = name;
+    }
+    get getName() {
+        return this.name;
+    }
+    set setName(v) {
+        this.name = v;
+    }
+    set setAge(v) {
+        this.age = v;
+    }
+    get getAge() {
+        return this.age;
+    }
+}
+let person = new Person("beer", 23);
+console.log(person.getName);
+/// NoInfer type === กรณีที่กรอก properties ที่เป็น type optional จะบังคับค่าให้ตรงกับ format ที่เราระบุไว้เบื้องต้น ในตัวอย่างคือ type C ่
+console.log("----------------------------------------------------------------------------");
+function createStreetLight(colors, defaultColor) {
+    console.log(defaultColor);
+}
+createStreetLight(["red", "yellow", "green"], "red"); // OK
+// createStreetLight(["red", "yellow", "green"], "blue");  // Error

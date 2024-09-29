@@ -369,5 +369,113 @@ type ReturnTypeFuntion = ReturnType<typeof funFullNmme>
 let returnTypeFuntion:ReturnTypeFuntion = "return type function"
 
 
+/// Awaited Type ===  use with asynchronous 
+
+async function getFullName():Promise<string> {
+ return "string asynchronous ";
+}
+
+type returnTypeGetFullName = Awaited<ReturnType<typeof getFullName>>; // ใช้เพื่อให้ เอา Promise ออกตอน return type function
+
+
+///Required Type === required all properties must use
+ 
+interface RequiredTypeUser {
+  fullName:string;
+  age?:number;
+}
+
+
+type RequiredType = Required<RequiredTypeUser>
+
+// let userReuired: RequiredType = { // error because age is required from Reuired
+//   fullName:"tanongsak intean"
+// }
+
+
+
+/// Readonly Type === all properties is readonly 
+type ReadonlyRequiredTypeUser = Readonly<RequiredTypeUser>
+
+
+/// Exclude Type ===  select type not same in example
+type AgeType = 20 | 10 | 30
+
+type ExcludeTypeAge = Exclude<AgeType,10 | 20 > // type 30 not same in types 
+
+//TIP! T Extends U ? T : never ==> T สืบทอดมาจาก U ใช่ไหม ถ้าใช้ให้ใช้ได้ ถ้าไม่ return never 
+//TIP! infer === type นั้นๆ เช่น type ReturnType = ReturnTypes = T Extends ()=> infer U ? U : never
+
+type CustomReturnType<T> = T extends (message:unknown)=> infer U ? U : never; /// ถ้า type T ตรงกับ (messange:unknown)=> infer(ผลลัพท์เป็น type ๊U) U ก็ return T ได้เลย แต่ไม่ return never
+
+function sayHello(message:string):string {
+  return message
+}
+
+type SayHelloReturnType = CustomReturnType<typeof sayHello>
+
+///  Extract Type ===-return type have match args 1 and args2 
+type ExtractTypeAge = Extract<AgeType,10 | 20>
+
+
+/// Nonnullable Type === select only type is not null or undefined
+
+type NonNullableType = NonNullable<AgeType | null | undefined> /// can use only 10 , 20 , 30
+
+
+/// constructorParameter Type ===  return args type of constructor 
+class Person {
+  private age:number;
+  private name:string;
+
+  constructor(name:string,age:number){
+    this.age = age
+    this.name = name
+  }
+  
+  public get getName() : string {
+    return this.name 
+  }
+
+  
+  public set setName(v : string) {
+    this.name = v;
+  }
+  
+  
+  public set setAge(v : number) {
+    this.age = v;
+  }
+
+  
+  public get getAge() :number {
+    return this.age; 
+  }
+}
+
+type ConstructorParameterPerson = ConstructorParameters<typeof Person> /// return constructor parametersArgsFunction
+
+
+//// InstanceType ==  return typeof this class when new class but don't have type of class 
+
+type InstanceTypePerson = InstanceType<typeof Person>
+
+let person:InstanceTypePerson = new Person("beer",23)
+
+console.log(person.getName);
+
+
+/// NoInfer type === กรณีที่กรอก properties ที่เป็น type optional จะบังคับค่าให้ตรงกับ format ที่เราระบุไว้เบื้องต้น ในตัวอย่างคือ type C ่
+
+console.log("----------------------------------------------------------------------------");
+
+function createStreetLight<C extends string>(
+  colors: C[],
+  defaultColor?: NoInfer<C>, /// type defaultColor เป็น optional แต่! ไม่ให้ infer == อนุมาน ว่า type นั้นเป็นไรบังคับให้ตรงที่มันมีอยู่
+):void {
+  console.log(defaultColor);
+}
+createStreetLight(["red", "yellow", "green"], "red");  // OK
+// createStreetLight(["red", "yellow", "green"], "blue");  // Error
 
 
