@@ -70,21 +70,26 @@ logMsg(subtract(3, 3));
 type mathFunction = (a: number, b: number) => number;
 
 let multiply: mathFunction = (c, d) => {
-  return c * d;
+  return c * d; 
 };
 
 logMsg(multiply(3, 3));
 
 // functions in interface
 interface mathFunctions {
-  (a: number, b: number): Number;
+  myfun:(a: number, b: number)=>Number;
+  myfun1:(a:string,b:string)=>string
 }
 
-let divide: mathFunctions = (c, d) => {
-  return c / d;
-};
-
-logMsg(divide(3, 3));
+let divide: mathFunctions = {
+   myfun:(a:number,b:number):number =>{
+    return a / b
+    },
+  myfun1:(a:string,b:string):string =>{
+  return  a+b
+  }
+}
+logMsg(divide.myfun(3,3));
 
 // optional parameters
 
@@ -129,7 +134,7 @@ const infinite = () => {
     }
   }
 };
-
+  
 // custom type guard
 const isNumber = (value: any): boolean => {
   return typeof value === "number" ? true : false;

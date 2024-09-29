@@ -1,51 +1,3 @@
-// class exampele student 
-interface Student {
-  _studentId:string;
-  _firstName:string;
-  _lastName:string;
-  _age:number;
-  getFullName:()=>string;
-}
-
-class student implements Student {
-  _firstName = "";
-  _lastName = "";
-  _age = 0;
-  _studentId = "";
-
-  constructor(firstName: string,lastName: string,age:number,studentId:string){
-    this._age = age;
-    this._studentId = studentId;
-    this._firstName = firstName;
-    this._lastName = lastName;
-  }
-
-  getFullName(){
-    return this._firstName +" " +this._lastName
-  }
-}
-
-let stu1 = new student("tanongsak","intean",23,"6406021622095")
-console.log(stu1.getFullName());
-
-
-
-
-
-//  optional properties
-
-interface Users  {
-  username:string;
-  email?:string;
-}
-
-let users:Users = { 
-  username:"tanongsakintean" 
-}
-
-users.email //Users.email?: string | undefined
-
-
 //generics type 
 function increment<T,U>(a:T[], b:U):number {
     let result:number = 0;
@@ -134,7 +86,7 @@ interface Assignment {
   verified?: boolean;
 }
 
-const updateAssignment = ( 
+const updateAssignment = (
   assign: Assignment,
   propsToUpdate: Partial<Assignment> /// this is some property in type from type in Partial in this case is Assignment
 ): Assignment => {
@@ -283,91 +235,3 @@ fetchUsers().then((users) => {
   user = [...users];
   console.log(user);
 });
-
-
-//Partial type === optional properties 
-
-type Animal = {
-  name:string;
-  age:number;
-  sound:string;
-}
-
-type PartialAnimal = Partial<Animal>
-
-let animal:PartialAnimal  = {
-  name:"dog" // age and sound is optional properties
-}
-
-/// Pick type === select properties in this types 
-
-type SelectSomePropAnimal = Pick<Animal,"name" | "sound"> // type SelectSomePropAnimal have properties slect from type Animal is name and sound
-
-let selectSomePropAnimal: SelectSomePropAnimal = {
-  name:"cat",
-  sound:"meao meao!"
-}
-
-
-/// omit type === select all properties but don't slect some type 
-type OmitSomePropAnimal = Omit<Animal,"name">
-
-let omitSomePropAnimal:OmitSomePropAnimal = {
-  age:10,
-  sound:"buff! buff!"
-}
-
-
-type NameAnimal = "dog" | "cat" | "fish" | "carb"
-type SoundAnimal = "buff! buff!" | "meao! meao!" | "pok! pok!" | "bu! bu!"
-
-/// Record type == key of type in exampe and value in example must is  object 
-type RecordAnimal = Record<NameAnimal,{sound:SoundAnimal}>
-
-let recordAnimal: RecordAnimal = { // Type NameAnimal must select all type in NameAnimal 
-  dog:{
-    sound:"buff! buff!"
-  },
-  cat:{
-    sound:"meao! meao!"
-  },
-  fish:{
-    sound:"pok! pok!"
-  },
-  carb:{
-    sound:"bu! bu!"
-  },
-}
-
-
-type RecordColor = Record<string,string>
-
-let color: RecordColor = {
-  gray:"#f1f2f3",
-  white:"#ffffff",
-  blue:"#000FFF"
-}
-
-
-/// Parameters type  === use to get parameters of function argument BUT!! must use with typeof to get argument type output is tuple 
-
-type FunFullName = (arg1:string, arg2:string) => string
-
-const funFullNmme:FunFullName = (arg1,arg2)=>{
-  return arg1 + " " + arg2;
-}
-
-type ParameterArgsFunction = Parameters<typeof funFullNmme>
-
-let parametersArgsFunction: ParameterArgsFunction = ["11","22"]
-
- 
-/// ReturnType ===  use to get return type of funtion BUT!! must use with typeof to get return type 
-
-type ReturnTypeFuntion = ReturnType<typeof funFullNmme>  
-
-let returnTypeFuntion:ReturnTypeFuntion = "return type function"
-
-
-
-

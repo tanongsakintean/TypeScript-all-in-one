@@ -8,7 +8,7 @@ const todaysTransactions = {
 console.log(todaysTransactions.Pizza);
 console.log(todaysTransactions["Pizza"]);
 let prop = "Pizza";
-console.log(todaysTransactions[prop]); // typescript can't specific show index of const if don't use [key:string] : number
+console.log("Pizza = ", todaysTransactions[prop]); // typescript can't specific show index of const if don't use [key:string] : number
 const todaysNet = (transactions) => {
     let total = 0;
     for (const transaction in transactions) {

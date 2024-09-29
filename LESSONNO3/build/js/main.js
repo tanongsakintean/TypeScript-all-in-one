@@ -50,3 +50,4 @@ var Grade;
     Grade[Grade["A"] = 5] = "A";
 })(Grade || (Grade = {}));
 console.log(Grade.U);
+console.log(Grade);

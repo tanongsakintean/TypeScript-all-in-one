@@ -12,7 +12,7 @@ album = 2023;
 newAlbum = 2023;
 newAlbum = "hello world!";
 
-const sum = (a: number, b: string) => {
+const sum = (a: number, b: string)=> {
   return a + b;
 };
 

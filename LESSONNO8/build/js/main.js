@@ -70,7 +70,7 @@ const processUser = (user) => {
     /// process the user with logic here
     return user;
 };
-console.log(processUser({ id: 1, name: "Beer" }));
+console.log(processUser({ id: 1, name: "Beer", gender: true }));
 // console.log(processUser({ name: "Opor" })); /// error is must have id in object because processUser have extends HasId
 const getUsersProperty = (/// this function is return value of property of array this
 /// K extends keyof T => K is key of type type example name:sting = key == name
@@ -80,6 +80,7 @@ users, key) => {
 const usersArray = [
     {
         id: 1,
+        gender: true,
         name: "Leanne Graham",
         username: "Bret",
         email: "Sincere@april.biz",
@@ -103,6 +104,7 @@ const usersArray = [
     },
     {
         id: 2,
+        gender: false,
         name: "Ervin Howell",
         username: "Antonette",
         email: "Shanna@melissa.tv",

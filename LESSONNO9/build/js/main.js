@@ -1,5 +1,4 @@
 "use strict";
-/// Utility Type
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,7 +8,69 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const updateAssignment = (assign, propsToUpdate /// this is some property in type for update value
+class student {
+    constructor(firstName, lastName, age, studentId) {
+        this._firstName = "";
+        this._lastName = "";
+        this._age = 0;
+        this._studentId = "";
+        this._age = age;
+        this._studentId = studentId;
+        this._firstName = firstName;
+        this._lastName = lastName;
+    }
+    getFullName() {
+        return this._firstName + " " + this._lastName;
+    }
+}
+let stu1 = new student("tanongsak", "intean", 23, "6406021622095");
+console.log(stu1.getFullName());
+let users = {
+    username: "tanongsakintean"
+};
+users.email; //Users.email?: string | undefined
+//generics type 
+function increment(a, b) {
+    let result = 0;
+    if (typeof a.every(it => typeof it == "number")) {
+        result = a.reduce((p, b) => p + b);
+    }
+    return b + result;
+}
+function map(arr, callback) {
+    return arr.map(callback);
+}
+function sort(arr, callback) {
+    return arr.sort(callback);
+}
+const queue = {
+    data: [],
+    enqueue(v) {
+        this.data.push(v);
+        return this.data;
+    },
+    dequeue() {
+        this.data.shift();
+        return this.data;
+    },
+};
+queue.enqueue("122");
+queue.enqueue("1122");
+console.log(queue.data);
+console.log(sort([2, 3, 41, 6, 7, 8, 1, 5, 7, 0], (a, b) => a - b));
+console.log(sort([2, 3, 41, 6, 7, 8, 1, 5, 7, 0], (a, b) => b - a));
+console.log(map(["1", "2", "3"], (s) => parseInt(s)));
+console.log(increment([1, 2, 3], 5));
+const reactangle = {
+    color: "red",
+    width: "20",
+    height: "30",
+    area(a, b) {
+        return 1 / 2 * a * b;
+    },
+};
+console.log("area reactangle = ", reactangle.area(12, 20));
+const updateAssignment = (assign, propsToUpdate /// this is some property in type from type in Partial in this case is Assignment
 ) => {
     return Object.assign(Object.assign({}, assign), propsToUpdate);
 };
@@ -82,3 +143,38 @@ fetchUsers().then((users) => {
     user = [...users];
     console.log(user);
 });
+let animal = {
+    name: "dog" // age and sound is optional properties
+};
+let selectSomePropAnimal = {
+    name: "cat",
+    sound: "meao meao!"
+};
+let omitSomePropAnimal = {
+    age: 10,
+    sound: "buff! buff!"
+};
+let recordAnimal = {
+    dog: {
+        sound: "buff! buff!"
+    },
+    cat: {
+        sound: "meao! meao!"
+    },
+    fish: {
+        sound: "pok! pok!"
+    },
+    carb: {
+        sound: "bu! bu!"
+    },
+};
+let color = {
+    gray: "#f1f2f3",
+    white: "#ffffff",
+    blue: "#000FFF"
+};
+const funFullNmme = (arg1, arg2) => {
+    return arg1 + " " + arg2;
+};
+let parametersArgsFunction = ["11", "22"];
+let returnTypeFuntion = "return type function";

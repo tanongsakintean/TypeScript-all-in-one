@@ -46,6 +46,7 @@ interface Musician {
   name: string;
   instrument: string;
   play(action: string): string;
+  stop():string;
 }
 
 class Guitarist implements Musician {
@@ -59,10 +60,15 @@ class Guitarist implements Musician {
   play(action: string): string {
     return `${this.name} ${action} the ${this.instrument}`;
   }
+
+  stop(): string {
+     return "stop" 
+  }
 }
 
 const Page = new Guitarist("Jimmy", "guitar");
 console.log(Page.play("strums"));
+console.log(Page.stop());
 ////////////////////////////////////////
 
 class Peeps {

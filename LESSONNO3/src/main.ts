@@ -27,7 +27,6 @@ let myObj: object;
 myObj = [];
 console.log(typeof myObj);
 myObj = bands;
-
 myObj = {};
 
 const exampleObj = {
@@ -70,7 +69,7 @@ const greetGuitar = (guitarList: guitarList) => {
 
 console.log(greetGuitar(evh));
 
-enum Grade { // all in one constant
+enum Grade { // all in one constant U - A  = 1 - 5
   U = 1,
   D,
   B,
@@ -79,3 +78,4 @@ enum Grade { // all in one constant
 }
 
 console.log(Grade.U);
+console.log(Grade);
